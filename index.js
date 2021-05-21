@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('express');
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://codeiUser:codeiuser@cluster0.vx9y5.mongodb.net/code_i?retryWrites=true&w=majority";
+const uri = "mongodb+srv://amazon:amazon1@cluster0.vx9y5.mongodb.net/amazon_users?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // App used dep...
@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 client.connect(err => {
     // Data collection...
-    const collection = client.db("code_i").collection("info");
+    const collection = client.db("amazon_users").collection("email");
     console.log("database conected successfully");
     // Sending data to database...
-    app.post("/add", (req, res) => {
+    app.post('/submit', (req, res) => {
         const info = req.body;
         console.log(info);
         collection.insertOne(info)
